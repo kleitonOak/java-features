@@ -1,9 +1,16 @@
-
+import java.util.Scanner;
+import java.io.PrintWriter;
+import java.io.File;
+import java.io.FileNotFoundException;
 
 public class Java7Features{
-	public static void main(String[] args){
+	public static final String FILE_NAME_USED_TO_READ =  "kiiti_read.txt";
+	public static final String FILE_NAME_USED_TO_WRITE =  "kiiti_write.txt";
+
+	public static void main(String[] args)throws FileNotFoundException{
 		switchString();
 		multiCatch();
+		tryWithMultipleResources();
 	}
 
 	public static void switchString(){
@@ -33,5 +40,35 @@ public class Java7Features{
 		}catch(ArithmeticException | StringIndexOutOfBoundsException e){
 			System.out.printf("Multi Catch Occoured - Exception Messagem: %s \n", e.getMessage());
 		}
+	}
+	
+	public static void tryWithResources() throws FileNotFoundException{
+		String alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+		int lowerSizeWord = 0;
+		int upperSizeWord = 25;
+		int wordSize = 7;
+		try(PrintWriter writer = new PrintWriter(new File(FILE_NAME_USED_TO_READ))){
+			for(int i = 0; i<21; i++){
+				StringBuilder word = new StringBuilder();
+				int size = 0;
+				while(size < wordSize){
+					int charPosition = (int)(Math.random()*(upperSizeWord - lowerSizeWord)) + lowerSizeWord;
+					word.append(alphabet.charAt(charPosition));
+					size++;
+				}
+				writer.println(word.toString());
+				word.setLength(0);
+			}
+		}
+	}
+	public static void tryWithMultipleResources()throws FileNotFoundException{
+		tryWithResources();
+		try(Scanner scanner = new Scanner(new File(FILE_NAME_USED_TO_READ)); 
+		    PrintWriter writer = new PrintWriter(new File(FILE_NAME_USED_TO_WRITE))){
+		    
+		    while(scanner.hasNext()){
+			writer.print(scanner.nextLine());
+		    }
+		}		
 	}
 }
