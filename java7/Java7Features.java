@@ -1,6 +1,9 @@
+
+
 public class Java7Features{
 	public static void main(String[] args){
 		switchString();
+		multiCatch();
 	}
 
 	public static void switchString(){
@@ -19,6 +22,16 @@ public class Java7Features{
 			default: 
 				System.out.printf("Default Result = %s and OkValue = %s \n","DEFAULT", "DEFAULT");
 				break;
+		}
+	}
+
+	public static void multiCatch(){
+		try{
+			int a = 0;
+			int b = 12;
+			int c = b/a;
+		}catch(ArithmeticException | StringIndexOutOfBoundsException e){
+			System.out.printf("Multi Catch Occoured - Exception Messagem: %s \n", e.getMessage());
 		}
 	}
 }
