@@ -11,6 +11,7 @@ public class Java7Features{
 		switchString();
 		multiCatch();
 		tryWithMultipleResources();
+		underscoreWithVariable();
 	}
 
 	public static void switchString(){
@@ -60,6 +61,7 @@ public class Java7Features{
 				word.setLength(0);
 			}
 		}
+		System.out.println("File Created!");
 	}
 	public static void tryWithMultipleResources()throws FileNotFoundException{
 		tryWithResources();
@@ -69,6 +71,14 @@ public class Java7Features{
 		    while(scanner.hasNext()){
 			writer.print(scanner.nextLine());
 		    }
-		}		
+		}
+		System.out.println("File Read!");		
+	}
+
+	public static void underscoreWithVariable(){
+		long valueLong = 2345_3456_9012_9774L; 
+		int valueInt = 6_345;
+		
+		System.out.printf("Just for better readability. Long Value = %d and Int Value = %d \n",valueLong, valueInt);		
 	}
 }
