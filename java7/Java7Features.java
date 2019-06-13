@@ -2,6 +2,8 @@ import java.util.Scanner;
 import java.io.PrintWriter;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.util.Map;
+import java.util.HashMap;
 
 public class Java7Features{
 	public static final String FILE_NAME_USED_TO_READ =  "kiiti_read.txt";
@@ -12,6 +14,7 @@ public class Java7Features{
 		multiCatch();
 		tryWithMultipleResources();
 		underscoreWithVariable();
+		typeInferenceForGeneric();
 	}
 
 	public static void switchString(){
@@ -80,5 +83,13 @@ public class Java7Features{
 		int valueInt = 6_345;
 		
 		System.out.printf("Just for better readability. Long Value = %d and Int Value = %d \n",valueLong, valueInt);		
+	}
+
+	public static void typeInferenceForGeneric(){
+		Map<String,String> myMap = new HashMap<>();
+		myMap.put("name","Kleiton");
+		myMap.put("language","Java");
+
+		System.out.printf("Name: %s, Language: %s \n",myMap.get("name"), myMap.get("language"));
 	}
 }
